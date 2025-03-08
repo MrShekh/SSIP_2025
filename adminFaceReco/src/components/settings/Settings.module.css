@@ -1,0 +1,589 @@
+/* Settings Page Styles */
+.container {
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 2rem;
+    margin: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    margin-bottom: 2rem;
+}
+
+.title {
+    color: #1F2937;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.description {
+    color: #6B7280;
+    font-size: 0.875rem;
+}
+
+.section {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.sectionTitle {
+    color: #1F2937;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.formGroup {
+    margin-bottom: 1.5rem;
+}
+
+.formLabel {
+    display: block;
+    color: #4B5563;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.formInput {
+    width: 100%;
+    padding: 0.625rem;
+    border: 1px solid #E5E7EB;
+    border-radius: 0.375rem;
+    background-color: #F9FAFB;
+    color: #1F2937;
+    transition: all 0.2s ease;
+}
+
+.formInput:focus {
+    outline: none;
+    border-color: #60A5FA;
+    box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.2);
+}
+
+.toggleContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.toggleSwitch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+}
+
+.toggleInput {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggleSlider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #E5E7EB;
+    transition: 0.4s;
+    border-radius: 24px;
+}
+
+.toggleSlider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+    background-color: #FFFFFF;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+.toggleInput:checked + .toggleSlider {
+    background-color: #60A5FA;
+}
+
+.toggleInput:checked + .toggleSlider:before {
+    transform: translateX(24px);
+}
+
+.saveButton {
+    background-color: #1E3A8A;
+    color: #FFFFFF;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+    cursor: pointer;
+}
+
+.saveButton:hover {
+    background-color: #1E40AF;
+}
+
+/* Helper Classes */
+.textSm {
+    font-size: 0.875rem;
+}
+
+.textGray {
+    color: #6B7280;
+}
+
+.ml2 {
+    margin-left: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+    
+    .formGroup {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Settings Components Styles */
+.settingsDrawer {
+    width: 900px;
+    max-width: 90vw;
+    background: linear-gradient(to right, #F5F5F5, #FFFFFF);
+    overflow: hidden;
+}
+
+.settingsHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.75rem;
+    background: linear-gradient(135deg, #1E3A8A, #0D47A1);
+    color: #FFFFFF;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.settingsHeader h6 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.settingsContent {
+    display: flex;
+    height: calc(100vh - 72px);
+    max-height: 800px;
+    position: relative;
+    overflow: hidden;
+}
+
+.settingsSidebar {
+    width: 260px;
+    min-width: 260px;
+    background-color: #F8FAFC;
+    padding: 1.25rem 0;
+    border-right: 1px solid rgba(30, 58, 138, 0.1);
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.03);
+    overflow-y: auto;
+    height: 100%;
+}
+
+.settingsMain {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2rem;
+    background-color: #FFFFFF;
+    height: 100%;
+}
+
+.menuItem {
+    margin: 0.375rem 1rem !important;
+    border-radius: 12px !important;
+    padding: 0.875rem 1.25rem !important;
+    transition: all 0.3s ease-in-out !important;
+    position: relative;
+    border: 1px solid transparent;
+    width: auto !important;
+}
+
+.menuItem:hover {
+    background-color: rgba(30, 58, 138, 0.04) !important;
+    border-color: rgba(30, 58, 138, 0.08);
+}
+
+.menuItem.selected {
+    background: linear-gradient(to right, rgba(30, 58, 138, 0.08), rgba(30, 58, 138, 0.03)) !important;
+    color: #1E3A8A !important;
+    font-weight: 600 !important;
+    border-color: rgba(30, 58, 138, 0.12);
+    box-shadow: 0 2px 4px rgba(30, 58, 138, 0.05);
+}
+
+.menuItem.selected::before {
+    content: '';
+    position: absolute;
+    left: -1rem;
+    top: 20%;
+    bottom: 20%;
+    width: 4px;
+    background: linear-gradient(to bottom, #1E3A8A, #0D47A1);
+    border-radius: 0 4px 4px 0;
+    box-shadow: 2px 0 4px rgba(30, 58, 138, 0.2);
+}
+
+.menuItem .MuiListItemIcon-root {
+    color: #64748B;
+    min-width: 40px;
+    transition: color 0.3s ease;
+}
+
+.menuItem.selected .MuiListItemIcon-root {
+    color: #1E3A8A !important;
+}
+
+.menuItem .MuiListItemText-primary {
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.settingsSection {
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.4s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.settingItem {
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    padding: 1.75rem;
+    margin-bottom: 1.75rem;
+    border: 1px solid rgba(30, 58, 138, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.settingItem::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, #1E3A8A, #0D47A1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.settingItem:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: rgba(30, 58, 138, 0.12);
+}
+
+.settingItem:hover::before {
+    opacity: 1;
+}
+
+.settingHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(30, 58, 138, 0.08);
+}
+
+.settingHeader .MuiTypography-subtitle1 {
+    color: #1E3A8A;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 0.3px;
+}
+
+.actionButtons {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.primaryButton {
+    background: linear-gradient(135deg, #1E3A8A, #0D47A1) !important;
+    color: #FFFFFF !important;
+    padding: 0.5rem 1.25rem !important;
+    border-radius: 8px !important;
+    text-transform: none !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.3px !important;
+    transition: all 0.3s ease !important;
+}
+
+.primaryButton:hover {
+    background: linear-gradient(135deg, #0D47A1, #1E3A8A) !important;
+    box-shadow: 0 4px 8px rgba(13, 71, 161, 0.3) !important;
+    transform: translateY(-1px);
+}
+
+/* Form Controls */
+.settingItem .MuiSlider-root {
+    color: #00ACC1;
+    height: 8px;
+}
+
+.settingItem .MuiSlider-thumb {
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #00ACC1, #00897B);
+    box-shadow: 0 2px 4px rgba(0, 172, 193, 0.3);
+    transition: all 0.3s ease;
+}
+
+.settingItem .MuiSlider-thumb:hover {
+    box-shadow: 0 4px 8px rgba(0, 172, 193, 0.4);
+}
+
+.settingItem .MuiSwitch-colorPrimary.Mui-checked {
+    color: #00ACC1;
+}
+
+.settingItem .MuiSwitch-colorPrimary.Mui-checked + .MuiSwitch-track {
+    background-color: rgba(0, 172, 193, 0.5);
+}
+
+.settingItem .MuiCheckbox-colorPrimary.Mui-checked {
+    color: #00ACC1;
+}
+
+.settingItem .MuiOutlinedInput-root {
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.settingItem .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+    border-color: rgba(0, 172, 193, 0.5);
+}
+
+.settingItem .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #00ACC1;
+    border-width: 2px;
+}
+
+.settingItem .MuiFormLabel-root.Mui-focused {
+    color: #00ACC1;
+}
+
+.settingItem .MuiInputLabel-root {
+    color: #64748B;
+}
+
+.settingItem .MuiFormControlLabel-label {
+    color: #1E293B;
+    font-weight: 500;
+}
+
+/* Table Styles */
+.settingItem .MuiTableHead-root .MuiTableCell-root {
+    background: linear-gradient(to right, #F8FAFC, #FFFFFF);
+    color: #1E3A8A;
+    font-weight: 600;
+    border-bottom: 2px solid rgba(30, 58, 138, 0.1);
+}
+
+.settingItem .MuiTableBody-root .MuiTableRow-root {
+    transition: all 0.3s ease;
+}
+
+.settingItem .MuiTableBody-root .MuiTableRow-root:hover {
+    background-color: rgba(30, 58, 138, 0.02);
+}
+
+.settingItem .MuiTableCell-root {
+    border-bottom: 1px solid rgba(30, 58, 138, 0.06);
+}
+
+/* Camera Dialog Styles */
+.cameraDialog {
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    background: linear-gradient(to right, #F8FAFC, #FFFFFF);
+}
+
+.cameraDialogTitle {
+    background: linear-gradient(135deg, #1E3A8A, #0D47A1);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.75rem !important;
+}
+
+.cameraDialogContent {
+    padding: 1.75rem !important;
+    background-color: #F8FAFC;
+}
+
+.cameraContainer {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    background-color: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cameraLoading,
+.cameraError {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 2;
+}
+
+.cameraError {
+    color: #E53935;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.retryButton {
+    margin-top: 1.25rem !important;
+    background: linear-gradient(135deg, #1E3A8A, #0D47A1) !important;
+    color: white !important;
+    padding: 0.5rem 1.25rem !important;
+    border-radius: 8px !important;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.cameraPreview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1);
+}
+
+.capturedImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.cameraDialogActions {
+    padding: 1.25rem 1.75rem !important;
+    background-color: #FFFFFF;
+    gap: 1rem;
+    border-top: 1px solid rgba(30, 58, 138, 0.08);
+}
+
+.captureButton {
+    background: linear-gradient(135deg, #00ACC1, #00897B) !important;
+    color: white !important;
+    padding: 0.5rem 2rem !important;
+    border-radius: 8px !important;
+    text-transform: none !important;
+    font-weight: 500 !important;
+    box-shadow: 0 2px 4px rgba(0, 172, 193, 0.3) !important;
+}
+
+.captureButton:hover {
+    box-shadow: 0 4px 8px rgba(0, 172, 193, 0.4) !important;
+    transform: translateY(-1px);
+}
+
+.retakeButton {
+    color: #1E3A8A !important;
+    border-color: #1E3A8A !important;
+    border-radius: 8px !important;
+    text-transform: none !important;
+    font-weight: 500 !important;
+}
+
+.retakeButton:hover {
+    background-color: rgba(30, 58, 138, 0.05) !important;
+}
+
+.useButton {
+    background: linear-gradient(135deg, #4CAF50, #388E3C) !important;
+    color: white !important;
+    border-radius: 8px !important;
+    text-transform: none !important;
+    font-weight: 500 !important;
+    box-shadow: 0 2px 4px rgba(76, 175, 80, 0.3) !important;
+}
+
+.useButton:hover {
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.4) !important;
+    transform: translateY(-1px);
+}
+
+.closeButton {
+    color: white !important;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .settingsDrawer {
+        width: 100vw;
+    }
+
+    .settingsSidebar {
+        width: 220px;
+    }
+
+    .settingsMain {
+        padding: 1.5rem;
+    }
+
+    .settingItem {
+        padding: 1.25rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .menuItem {
+        padding: 0.75rem 1rem !important;
+    }
+}

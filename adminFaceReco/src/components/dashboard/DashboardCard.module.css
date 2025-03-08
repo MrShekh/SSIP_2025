@@ -1,0 +1,94 @@
+/* Dashboard Card Styles */
+.card {
+    background: #FFFFFF;
+    border-radius: 12px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Status Indicators */
+.total {
+    border-left: 4px solid #3B82F6;
+    background: linear-gradient(to right, rgba(59, 130, 246, 0.1), transparent 50%);
+}
+
+.present {
+    border-left: 4px solid #10B981;
+    background: linear-gradient(to right, rgba(16, 185, 129, 0.1), transparent 50%);
+}
+
+.absent {
+    border-left: 4px solid #EF4444;
+    background: linear-gradient(to right, rgba(239, 68, 68, 0.1), transparent 50%);
+}
+
+.late {
+    border-left: 4px solid #F59E0B;
+    background: linear-gradient(to right, rgba(245, 158, 11, 0.1), transparent 50%);
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.cardTitle {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #4B5563;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+.cardIcon {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #F3F4F6;
+}
+
+.total .cardIcon {
+    color: #3B82F6;
+    background-color: rgba(59, 130, 246, 0.1);
+}
+
+.present .cardIcon {
+    color: #10B981;
+    background-color: rgba(16, 185, 129, 0.1);
+}
+
+.absent .cardIcon {
+    color: #EF4444;
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+.late .cardIcon {
+    color: #F59E0B;
+    background-color: rgba(245, 158, 11, 0.1);
+}
+
+.cardValue {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0.5rem 0;
+}
+
+.cardDescription {
+    font-size: 0.875rem;
+    color: #6B7280;
+    margin: 0;
+}

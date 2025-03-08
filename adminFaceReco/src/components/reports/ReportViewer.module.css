@@ -1,0 +1,267 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.modal {
+  background: white;
+  border-radius: 1rem;
+  width: 90%;
+  max-width: 1200px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.headerContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1F2937;
+  margin: 0;
+}
+
+.subtitle {
+  color: #6B7280;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.downloadButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background-color: #1E3A8A;
+  color: white;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.downloadButton:hover {
+  background-color: #1E40AF;
+}
+
+.closeButton {
+  padding: 0.5rem;
+  color: #6B7280;
+  border-radius: 0.375rem;
+  transition: all 0.2s;
+}
+
+.closeButton:hover {
+  background-color: #F3F4F6;
+  color: #1F2937;
+}
+
+.actionIcon, .closeIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.content {
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.filters {
+  display: flex;
+  gap: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.filterItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.filterIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #1E3A8A;
+}
+
+.filterText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.filterLabel {
+  font-size: 0.75rem;
+  color: #6B7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.filterValue {
+  font-size: 0.875rem;
+  color: #1F2937;
+  font-weight: 500;
+}
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.summaryCard {
+  background: #F9FAFB;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+}
+
+.summaryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.summaryHeader h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1F2937;
+  margin: 0;
+}
+
+.summaryIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #1E3A8A;
+}
+
+.summaryStats {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.statLabel {
+  font-size: 0.875rem;
+  color: #6B7280;
+}
+
+.statValue {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1F2937;
+}
+
+.statValue.present {
+  color: #10B981;
+}
+
+.statValue.late {
+  color: #F59E0B;
+}
+
+.statValue.absent {
+  color: #EF4444;
+}
+
+.progressBar {
+  width: 100%;
+  height: 0.5rem;
+  background-color: #E5E7EB;
+  border-radius: 9999px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.progressFill {
+  height: 100%;
+  background-color: #1E3A8A;
+  border-radius: 9999px;
+  transition: width 0.3s ease;
+}
+
+.charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.chartCard {
+  background: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  height: 300px;
+}
+
+.chartCard h3 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1F2937;
+  margin: 0 0 1rem 0;
+}
+
+@media (max-width: 768px) {
+  .modal {
+    width: 95%;
+    max-height: 95vh;
+  }
+
+  .filters {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .summary, .charts {
+    grid-template-columns: 1fr;
+  }
+}

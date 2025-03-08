@@ -1,0 +1,40 @@
+.mainLayout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f3f4f6;
+}
+
+.mainContent {
+  flex: 1;
+  margin-left: 250px; /* Same as sidebar width */
+  transition: margin-left 0.3s ease;
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainContent.collapsed {
+  margin-left: 72px; /* Same as collapsed sidebar width */
+}
+
+.contentArea {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .mainContent {
+    margin-left: 72px;
+  }
+  
+  .mainContent.collapsed {
+    margin-left: 0;
+  }
+  
+  .contentArea {
+    padding: 1rem;
+  }
+}

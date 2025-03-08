@@ -1,0 +1,48 @@
+.graphContainer {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+  height: 400px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .graphContainer {
+    height: 300px;
+  }
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .row:first-child {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.graphCard {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.graphCard h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.doughnutContainer {
+    max-width: 300px;
+    margin: 0 auto;
+}

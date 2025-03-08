@@ -1,0 +1,243 @@
+/* Attendance Table Styles */
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: #FFFFFF;
+    border-radius: 10px;
+    margin: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.summaryContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.summaryCard {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cardIcon {
+    margin-right: 1rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+}
+
+.cardContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.cardTitle {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6B7280;
+}
+
+.cardValue {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 0.25rem;
+}
+
+/* Card color variants */
+.green {
+    background-color: #C6F6D5;
+}
+
+.green .cardIcon {
+    background-color: #B2FFFC;
+    color: #34C759;
+}
+
+.green .cardValue {
+    color: #2E865F;
+}
+
+.red {
+    background-color: #FEE2E2;
+}
+
+.red .cardIcon {
+    background-color: #FFC5C5;
+    color: #EF4444;
+}
+
+.red .cardValue {
+    color: #B91C1C;
+}
+
+.yellow {
+    background-color: #F7DC6F;
+}
+
+.yellow .cardIcon {
+    background-color: #F2C464;
+    color: #F59E0B;
+}
+
+.yellow .cardValue {
+    color: #78350F;
+}
+
+.blue {
+    background-color: #C5CAE9;
+}
+
+.blue .cardIcon {
+    background-color: #A1C9F2;
+    color: #3498DB;
+}
+
+.blue .cardValue {
+    color: #1A56DB;
+}
+
+.purple {
+    background-color: #C9C3E5;
+}
+
+.purple .cardIcon {
+    background-color: #B4A0E3;
+    color: #7A49A5;
+}
+
+.purple .cardValue {
+    color: #4C2889;
+}
+
+.tableContainer {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.tableHeader {
+    background-color: #60A5FA;
+    color: #FFFFFF;
+}
+
+.tableHeader th {
+    padding: 1rem;
+    font-weight: 600;
+    text-align: left;
+    border-bottom: 2px solid #E5E7EB;
+}
+
+.tableHeader th:first-child {
+    border-top-left-radius: 8px;
+}
+
+.tableHeader th:last-child {
+    border-top-right-radius: 8px;
+}
+
+.tableRow {
+    transition: background-color 0.2s ease;
+}
+
+.tableRow:nth-child(even) {
+    background-color: #F9FAFB;
+}
+
+.tableRow:nth-child(odd) {
+    background-color: #FFFFFF;
+}
+
+.tableRow:hover {
+    background-color: #F3F4F6;
+}
+
+.tableCell {
+    padding: 1rem;
+    color: #1F2937;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+/* Status Badges */
+.statusBadge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+.present {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: #10B981;
+}
+
+.absent {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #EF4444;
+}
+
+.late {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: #F59E0B;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.paginationButton {
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    background-color: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    color: #1F2937;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.paginationButton:hover {
+    background-color: #F3F4F6;
+}
+
+.paginationButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.active {
+    background-color: #60A5FA;
+    color: #FFFFFF;
+    border-color: #60A5FA;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        margin: 1rem;
+        padding: 1rem;
+        overflow-x: auto;
+    }
+    
+    .tableCell {
+        padding: 0.75rem;
+    }
+}
