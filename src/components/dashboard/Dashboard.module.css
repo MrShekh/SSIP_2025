@@ -1,0 +1,69 @@
+.dashboard {
+    padding: 1.5rem;
+}
+
+.dashboardHeader {
+    margin-bottom: 1.5rem;
+}
+
+.dashboardTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1F2937;
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.sectionTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin-bottom: 1rem;
+}
+
+.attendanceSection {
+    background: #FFFFFF;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode Styles */
+:global(.dark) .dashboard {
+    background: #111827;
+}
+
+:global(.dark) .dashboardTitle,
+:global(.dark) .sectionTitle {
+    color: #F9FAFB;
+}
+
+:global(.dark) .attendanceSection {
+    background: #1F2937;
+}
+
+/* Responsive Design */
+@media (max-width: 1280px) {
+    .statsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .dashboard {
+        padding: 1rem;
+    }
+
+    .statsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .attendanceSection {
+        padding: 1rem;
+    }
+}

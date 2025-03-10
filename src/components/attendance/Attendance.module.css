@@ -1,0 +1,278 @@
+.attendanceContainer {
+  padding: 1.5rem;
+  background-color: #F3F4F6;
+  min-height: 100vh;
+}
+
+.headerSection {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.headerSection::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(to right, #6366f1, #818cf8);
+  border-radius: 2px;
+}
+
+.title {
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.exportButton {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #1E3A8A;
+  color: white;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.exportButton:hover {
+  background-color: #1E40AF;
+}
+
+.viewToggle {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+  background-color: #E5E7EB;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+  width: fit-content;
+}
+
+.toggleButton {
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  color: #4B5563;
+  transition: all 0.2s;
+}
+
+.toggleButton:hover {
+  color: #1F2937;
+}
+
+.toggleButton.active {
+  background-color: white;
+  color: #1E3A8A;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.attendanceCard {
+  border-radius: 1rem !important;
+  background: linear-gradient(145deg, #ffffff, #f8fafc) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1),
+              0 10px 15px -3px rgba(0, 0, 0, 0.05) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.attendanceCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+              0 15px 25px -4px rgba(99, 102, 241, 0.1) !important;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 1.5rem;
+}
+
+.attendanceInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background-color: #f9fafb;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.infoItem:hover {
+  background-color: #f3f4f6;
+}
+
+.infoIcon {
+  color: #6366f1;
+  opacity: 0.8;
+}
+
+.historySection {
+  border-radius: 1rem !important;
+  padding: 1rem !important;
+  height: 100%;
+  min-height: 600px;
+  background: #ffffff !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+.cameraSection {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9fafb;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.emptyState {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #ffffff, #f8fafc);
+  border-radius: 0.75rem;
+  border: 2px dashed #e5e7eb;
+  padding: 2rem;
+  transition: opacity 0.3s ease;
+}
+
+.emptyStateContent {
+  max-width: 400px;
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.markAttendanceButton {
+  background: linear-gradient(45deg, #6366f1, #818cf8) !important;
+  border-radius: 0.5rem !important;
+  text-transform: none !important;
+  padding: 0.75rem 1.5rem !important;
+  font-size: 0.875rem !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.2) !important;
+}
+
+.markAttendanceButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px -1px rgba(99, 102, 241, 0.3) !important;
+  background: linear-gradient(45deg, #4f46e5, #6366f1) !important;
+}
+
+.markAttendanceButton.closeButton {
+  background: linear-gradient(45deg, #ef4444, #f87171) !important;
+}
+
+.markAttendanceButton.closeButton:hover {
+  background: linear-gradient(45deg, #dc2626, #ef4444) !important;
+}
+
+.fullScreenCamera {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.cameraCloseButton {
+  position: absolute !important;
+  top: 1.5rem !important;
+  right: 1.5rem !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s ease !important;
+  z-index: 1001 !important;
+  padding: 0.75rem !important;
+}
+
+.cameraCloseButton:hover {
+  background-color: rgba(239, 68, 68, 0.2) !important;
+  transform: scale(1.1);
+}
+
+.cameraCloseButton svg {
+  font-size: 1.75rem;
+}
+
+/* Remove unused styles */
+.historySectionHeader,
+.cameraDialog,
+.cameraTitle,
+.cameraContent,
+.closeButton {
+  display: none;
+}
+
+/* Responsive styles */
+@media (max-width: 960px) {
+  .attendanceCard {
+    margin-bottom: 2rem;
+  }
+
+  .historySection {
+    min-height: 400px;
+  }
+
+  .emptyState {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .headerSection {
+    text-align: center;
+  }
+
+  .headerSection::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .infoItem {
+    padding: 0.5rem;
+  }
+
+  .emptyStateContent {
+    max-width: 100%;
+  }
+}

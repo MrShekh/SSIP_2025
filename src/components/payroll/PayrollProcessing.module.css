@@ -1,0 +1,126 @@
+.payrollProcessing {
+  width: 100%;
+}
+
+.controls {
+  margin-bottom: 2rem;
+}
+
+.periodSelection {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.monthSelect {
+  padding: 0.75rem;
+  border: 1px solid #e4e6e9;
+  border-radius: 8px;
+  font-size: 1rem;
+  min-width: 200px;
+}
+
+.processButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #1890ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.processButton:hover:not(:disabled) {
+  background-color: #096dd9;
+}
+
+.processButton:disabled {
+  background-color: #d9d9d9;
+  cursor: not-allowed;
+}
+
+.summaryCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background-color: white;
+  border: 1px solid #e4e6e9;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.cardIcon {
+  font-size: 1.5rem;
+  color: #1890ff;
+}
+
+.cardHeader h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.amount {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.description {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.payrollTable {
+  overflow-x: auto;
+  margin-top: 2rem;
+}
+
+.payrollTable table {
+  width: 100%;
+  border-collapse: collapse;
+  white-space: nowrap;
+}
+
+.payrollTable th,
+.payrollTable td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e4e6e9;
+}
+
+.payrollTable th {
+  background-color: #f7f9fc;
+  font-weight: 600;
+  color: #333;
+}
+
+.payrollTable tr:hover {
+  background-color: #f7f9fc;
+} 

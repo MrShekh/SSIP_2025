@@ -1,0 +1,120 @@
+.heatmapContainer {
+    background: #FFFFFF;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+.heatmapTitle {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin-bottom: 1rem;
+}
+
+.heatmapGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.heatmapCell {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.heatmapCell:hover {
+    transform: scale(1.1);
+}
+
+.heatmapCell:hover .tooltip {
+    display: block;
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem;
+    background: #1F2937;
+    color: #FFFFFF;
+    font-size: 0.75rem;
+    border-radius: 4px;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: #1F2937 transparent transparent transparent;
+}
+
+.high {
+    background-color: #10B981;
+}
+
+.moderate {
+    background-color: #FACC15;
+}
+
+.low {
+    background-color: #EF4444;
+}
+
+.legend {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #E5E7EB;
+}
+
+.legendItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #4B5563;
+}
+
+.legendColor {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 4px;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+    .heatmapContainer {
+        padding: 1rem;
+    }
+
+    .heatmapGrid {
+        grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
+    }
+
+    .heatmapCell {
+        width: 30px;
+        height: 30px;
+    }
+
+    .legend {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+}
