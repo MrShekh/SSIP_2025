@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
 
 const AuthContext = createContext(null);
 
@@ -9,19 +9,30 @@ export const AuthProvider = ({ children }) => {
     return savedUser ? JSON.parse(savedUser) : null;
   });
 
-  const login = (userData) => {
+  const login = useCallback((userData) => {
     setUser(userData);
     localStorage.setItem('user', JSON.stringify(userData));
-  };
+  }, []);
 
-  const logout = () => {
+  const logout = useCallback(() => {
     setUser(null);
     localStorage.removeItem('user');
-  };
+  }, []);
 
-  const isAuthenticated = () => {
+  const updateUser = useCallback(async (updatedUserData) => {
+    try {
+      // Here you would typically make an API call to update the user data
+      // For now, we'll just update it locally
+      setUser(updatedUserData);
+      localStorage.setItem('user', JSON.stringify(updatedUserData));
+    } catch (error) {
+      throw new Error('Failed to update user profile');
+    }
+  }, []);
+
+  const isAuthenticated = useCallback(() => {
     return !!user;
-  };
+  }, [user]);
 
   useEffect(() => {
     // Check localStorage for existing user data
@@ -31,8 +42,17 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
+  // Memoize context value to prevent unnecessary re-renders
+  const contextValue = useMemo(() => ({
+    user,
+    login,
+    logout,
+    updateUser,
+    isAuthenticated
+  }), [user, login, logout, updateUser, isAuthenticated]);
+
   return (
-    <AuthContext.Provider value={{ user, login, logout, isAuthenticated }}>
+    <AuthContext.Provider value={contextValue}>
       {children}
     </AuthContext.Provider>
   );

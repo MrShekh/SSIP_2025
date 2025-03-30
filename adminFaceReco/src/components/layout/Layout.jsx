@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import Sidebar from './Sidebar';
 import Header from './Header';
 import styles from './Layout.module.css';
 
-const Layout = ({ children }) => {
+// Optimize Layout with memo to prevent unnecessary re-renders
+const Layout = memo(({ children }) => {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
-
+ 
   const handleSidebarCollapse = (collapsed) => {
     setIsSidebarCollapsed(collapsed);
   };
@@ -21,6 +22,8 @@ const Layout = ({ children }) => {
       </div>
     </div>
   );
-};
+});
+
+Layout.displayName = 'Layout';
 
 export default Layout;

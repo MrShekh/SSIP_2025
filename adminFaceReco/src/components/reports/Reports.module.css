@@ -297,3 +297,86 @@
     justify-content: center;
   }
 }
+
+.reportTypesSection {
+  background: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1F2937;
+  margin-bottom: 1rem;
+}
+
+.sectionIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #1E3A8A;
+}
+
+.reportTypeOptions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.reportTypeOption {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: #F9FAFB;
+  border: 1px solid #E5E7EB;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.reportTypeOption:hover {
+  background: #F3F4F6;
+  border-color: #D1D5DB;
+}
+
+.reportTypeCheckbox {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 0.25rem;
+  border: 2px solid #D1D5DB;
+  cursor: pointer;
+  accent-color: #1E3A8A;
+}
+
+.reportTypeIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #1E3A8A;
+}
+
+.reportTypeLabel {
+  font-size: 0.875rem;
+  color: #4B5563;
+  font-weight: 500;
+}
+
+.reportTypeOption:has(input:checked) {
+  background: #EEF2FF;
+  border-color: #1E3A8A;
+}
+
+.reportTypeOption:has(input:checked) .reportTypeLabel {
+  color: #1E3A8A;
+}
+
+@media (max-width: 768px) {
+  .reportTypeOptions {
+    grid-template-columns: 1fr;
+  }
+}

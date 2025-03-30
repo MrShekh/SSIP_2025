@@ -12,13 +12,6 @@ const ReportFilters = ({ filters, onChange }) => {
     onChange({ ...filters, timeRange: range });
   };
 
-  const handleStatusToggle = (status) => {
-    const newStatuses = filters.status.includes(status)
-      ? filters.status.filter(s => s !== status)
-      : [...filters.status, status];
-    onChange({ ...filters, status: newStatuses });
-  };
-
   const handleChange = (field, value) => {
     onChange({ ...filters, [field]: value });
   };
@@ -29,6 +22,37 @@ const ReportFilters = ({ filters, onChange }) => {
         <HiFilter className={styles.titleIcon} />
         Filter Report
       </h2>
+      <div className={styles.filterSection}>
+        <label className={styles.filterLabel}>Employee</label>
+        <div className={styles.inputField}>
+          <HiUser className={styles.fieldIcon} />
+          <input
+            type="text"
+            className={styles.searchInput}
+            placeholder="Search employee..."
+            value={filters.employee}
+            onChange={(e) => handleChange('employee', e.target.value)}
+          />
+        </div>
+      </div>
+      <div className={styles.filterSection}>
+        <label className={styles.filterLabel}>Department</label>
+        <div className={styles.inputField}>
+          <HiOfficeBuilding className={styles.fieldIcon} />
+          <select
+            className={styles.select}
+            value={filters.department}
+            onChange={(e) => handleChange('department', e.target.value)}
+          >
+            <option value="">All Departments</option>
+            <option value="engineering">Engineering</option>
+            <option value="marketing">Marketing</option>
+            <option value="sales">Sales</option>
+            <option value="hr">HR</option>
+            <option value="finance">Finance</option>
+          </select>
+        </div>
+      </div>
 
       <div className={styles.filterSection}>
         <label className={styles.filterLabel}>Time Range</label>
@@ -91,68 +115,10 @@ const ReportFilters = ({ filters, onChange }) => {
         )}
       </div>
 
-      <div className={styles.filterSection}>
-        <label className={styles.filterLabel}>Department</label>
-        <div className={styles.inputField}>
-          <HiOfficeBuilding className={styles.fieldIcon} />
-          <select
-            className={styles.select}
-            value={filters.department}
-            onChange={(e) => handleChange('department', e.target.value)}
-          >
-            <option value="">All Departments</option>
-            <option value="engineering">Engineering</option>
-            <option value="marketing">Marketing</option>
-            <option value="sales">Sales</option>
-            <option value="hr">HR</option>
-            <option value="finance">Finance</option>
-          </select>
-        </div>
-      </div>
+      
 
-      <div className={styles.filterSection}>
-        <label className={styles.filterLabel}>Employee</label>
-        <div className={styles.inputField}>
-          <HiUser className={styles.fieldIcon} />
-          <input
-            type="text"
-            className={styles.searchInput}
-            placeholder="Search employee..."
-            value={filters.employee}
-            onChange={(e) => handleChange('employee', e.target.value)}
-          />
-        </div>
-      </div>
+      
 
-      <div className={styles.filterSection}>
-        <label className={styles.filterLabel}>Status</label>
-        <div className={styles.statusButtons}>
-          <button
-            className={`${styles.statusButton} ${styles.present} ${
-              filters.status.includes('present') ? styles.active : ''
-            }`}
-            onClick={() => handleStatusToggle('present')}
-          >
-            Present
-          </button>
-          <button
-            className={`${styles.statusButton} ${styles.late} ${
-              filters.status.includes('late') ? styles.active : ''
-            }`}
-            onClick={() => handleStatusToggle('late')}
-          >
-            Late
-          </button>
-          <button
-            className={`${styles.statusButton} ${styles.absent} ${
-              filters.status.includes('absent') ? styles.active : ''
-            }`}
-            onClick={() => handleStatusToggle('absent')}
-          >
-            Absent
-          </button>
-        </div>
-      </div>
     </div>
   );
 };

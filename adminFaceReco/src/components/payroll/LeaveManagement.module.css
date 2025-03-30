@@ -1,0 +1,225 @@
+.leaveManagement {
+  width: 100%;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.viewToggle {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.toggleButton {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #f0f2f5;
+  color: #333;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toggleButton:hover {
+  background-color: #e4e6e9;
+}
+
+.toggleButton.active {
+  background-color: #1890ff;
+  color: white;
+}
+
+.teamFilter {
+  min-width: 200px;
+}
+
+.teamSelect {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e4e6e9;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.leaveRequests {
+  margin-top: 2rem;
+}
+
+.requestsTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.requestsTable th,
+.requestsTable td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e4e6e9;
+}
+
+.requestsTable th {
+  background-color: #f7f9fc;
+  font-weight: 600;
+  color: #333;
+}
+
+.status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.pending {
+  background-color: #fff7e6;
+  color: #fa8c16;
+}
+
+.approved {
+  background-color: #f6ffed;
+  color: #52c41a;
+}
+
+.rejected {
+  background-color: #fff1f0;
+  color: #f5222d;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  background-color: #f0f2f5;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.actionButton:disabled {
+  background-color: #f0f2f5;
+  color: #d9d9d9;
+  cursor: not-allowed;
+}
+
+.actionButton:not(:disabled):hover {
+  background-color: #e4e6e9;
+}
+
+.approve:not(:disabled):hover {
+  background-color: #f6ffed;
+  color: #52c41a;
+}
+
+.reject:not(:disabled):hover {
+  background-color: #fff1f0;
+  color: #f5222d;
+}
+
+.holidays {
+  margin-top: 2rem;
+}
+
+.addHoliday {
+  margin-bottom: 2rem;
+  background-color: #f7f9fc;
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+.holidayForm {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.input {
+  padding: 0.75rem;
+  border: 1px solid #e4e6e9;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  min-width: 200px;
+  flex: 1;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.1);
+}
+
+.input:hover {
+  border-color: #1890ff;
+}
+
+.addButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #1890ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 150px;
+}
+
+.addButton:hover {
+  background-color: #096dd9;
+  transform: translateY(-1px);
+}
+
+.addButton:active {
+  transform: translateY(0);
+}
+
+.holidaysTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.holidaysTable th,
+.holidaysTable td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e4e6e9;
+}
+
+.holidaysTable th {
+  background-color: #f7f9fc;
+  font-weight: 600;
+  color: #333;
+}
+
+.holidaysTable tr:hover {
+  background-color: #f7f9fc;
+}
+
+.delete:hover {
+  background-color: #fff1f0;
+  color: #f5222d;
+  transform: scale(1.1);
+} 

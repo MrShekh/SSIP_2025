@@ -70,21 +70,13 @@ const Header = () => {
   };
 
   const handleSettingsClick = () => {
-    navigate('/settings');
+    navigate('/settings/security');
     setShowProfileMenu(false);
   };
 
   return (
     <header className={styles.header}>
       <div className={styles.headerContent}>
-        <div className={styles.searchBar}>
-          <input
-            type="text"
-            placeholder="Search..."
-            className={styles.searchInput}
-          />
-        </div>
-
         <div className={styles.headerRight}>
           <div className={styles.notificationWrapper} ref={notificationRef}>
             <button
@@ -127,7 +119,6 @@ const Header = () => {
               </div>
             )}
           </div>
-
           <div className={styles.profileWrapper} ref={profileRef}>
             <button
               className={styles.profileButton}
@@ -162,6 +153,13 @@ const Header = () => {
                   </div>
                 </div>
                 <div className={styles.menuItems}>
+                  <button
+                    className={styles.menuItem}
+                    onClick={() => navigate('/profile')}
+                  >
+                    <AiOutlineUser className={styles.menuIcon} />
+                    Profile
+                  </button>
                   <button
                     className={styles.menuItem}
                     onClick={handleSettingsClick}

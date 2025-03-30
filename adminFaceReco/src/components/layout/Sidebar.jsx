@@ -1,67 +1,71 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React, { useState, useMemo, memo, useCallback } from 'react';
+import { NavLink } from 'react-router-dom';
 import { 
-  AiOutlineHome,
-  AiOutlineTeam,
-  AiOutlineFileText,
-  AiOutlineLeft,
-  AiOutlineRight
-} from 'react-icons/ai';
+  Dashboard, 
+  People, 
+  CreditCard, 
+  InsertChart, 
+  Menu,
+  ChevronLeft,
+  MonetizationOn
+} from '@mui/icons-material';
 import styles from './Sidebar.module.css';
 
-const Sidebar = ({ onCollapse }) => {
-  const location = useLocation();
-  const [isCollapsed, setIsCollapsed] = useState(false);
+// Optimize Sidebar with memo to prevent unnecessary re-renders
+const Sidebar = memo(({ onCollapse }) => {
+  const [collapsed, setCollapsed] = useState(false);
 
-  const menuItems = [
-    { title: 'Dashboard', path: '/', icon: AiOutlineHome },
-    { title: 'Attendance', path: '/attendance', icon: AiOutlineTeam },
-    { title: 'Reports', path: '/reports', icon: AiOutlineFileText },
-  ];
+  // Optimize navigation toggle with useCallback
+  const toggleCollapse = useCallback(() => {
+    setCollapsed(prev => {
+      const newState = !prev;
+      if (onCollapse) onCollapse(newState);
+      return newState;
+    });
+  }, [onCollapse]);
 
-  const toggleSidebar = () => {
-    const newCollapsed = !isCollapsed;
-    setIsCollapsed(newCollapsed);
-    onCollapse?.(newCollapsed);
-  };
+  // Memoize navigation items to prevent recreation on each render
+  const navigationItems = useMemo(() => [
+    { path: '/dashboard', name: 'Dashboard', icon: <Dashboard /> },
+    { path: '/employees', name: 'Employees', icon: <People /> },
+    { path: '/attendance', name: 'Attendance', icon: <CreditCard /> },
+    { path: '/payroll', name: 'Payroll', icon: <MonetizationOn /> },
+    { path: '/reports', name: 'Reports', icon: <InsertChart /> },
+  ], []);
 
   return (
-    <div className={`${styles.sidebar} ${isCollapsed ? styles.collapsed : ''}`}>
+    <div className={`${styles.sidebar} ${collapsed ? styles.collapsed : ''}`}>
       <div className={styles.sidebarHeader}>
-        {!isCollapsed && <h2 className={styles.sidebarLogo}>Admin Dashboard</h2>}
+        {!collapsed && <h2 className={styles.sidebarLogo}>Admin Dashboard</h2>}
         <button 
           className={styles.collapseButton}
-          onClick={toggleSidebar}
-          aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+          onClick={toggleCollapse}
+          aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
-          {isCollapsed ? <AiOutlineRight className={styles.navIcon} /> : <AiOutlineLeft className={styles.navIcon} />}
+          {collapsed ? <Menu className={styles.navIcon} /> : <ChevronLeft className={styles.navIcon} />}
         </button>
       </div>
-      
+
       <nav className={styles.navigation}>
-        {menuItems.map((item) => {
-          const Icon = item.icon;
-          const isActive = location.pathname === item.path;
-          return (
-            <Link
-              key={item.path}
-              to={item.path}
-              className={`${styles.navItem} ${isActive ? styles.active : ''}`}
-              title={isCollapsed ? item.title : ''}
-            >
-              <Icon className={styles.navIcon} />
-              {!isCollapsed && <span className={styles.navText}>{item.title}</span>}
-            </Link>
-          );
-        })}
+        {navigationItems.map((item) => (
+          <NavLink
+            key={item.path}
+            to={item.path}
+            className={({ isActive }) => 
+              `${styles.navItem} ${isActive ? styles.active : ''}`
+            }
+            title={collapsed ? item.name : ''}
+            end={item.path === '/'}
+          >
+            <span className={styles.navIcon}>{item.icon}</span>
+            {!collapsed && <span className={styles.navText}>{item.name}</span>}
+          </NavLink>
+        ))}
       </nav>
     </div>
   );
-};
+});
 
-Sidebar.propTypes = {
-  onCollapse: PropTypes.func
-};
+Sidebar.displayName = 'Sidebar';
 
 export default Sidebar;

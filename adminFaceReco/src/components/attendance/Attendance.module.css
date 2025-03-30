@@ -4,17 +4,24 @@
   min-height: 100vh;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.headerSection {
   margin-bottom: 2rem;
 }
 
+.headerSection::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(to right, #6366f1, #818cf8);
+  border-radius: 2px;
+}
+
 .title {
-  font-size: 1.875rem;
-  font-weight: 700;
-  color: #1F2937;
+  color: #111827;
+  margin-bottom: 0.5rem;
 }
 
 .actions {
@@ -63,4 +70,251 @@
   background-color: white;
   color: #1E3A8A;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.attendanceCard {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.attendanceCard:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.userInfo {
+  text-align: center;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.attendanceInfo {
+  padding: 1.5rem 0;
+}
+
+.infoItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.infoIcon {
+  color: #6366f1;
+  margin-top: 4px;
+}
+
+.historySection {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.cameraSection {
+  position: relative;
+  background-color: #f8fafc;
+}
+
+.cameraContainer {
+  width: 100%;
+  height: 100%;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+}
+
+.cameraContainer video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cameraContainer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid #6366f1;
+  border-radius: 0.75rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(0.98);
+  }
+}
+
+.detectionMessage {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+  animation: fadeInUp 0.3s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.emptyState {
+  padding: 2rem;
+  background-color: #f8fafc;
+}
+
+.emptyStateContent {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.markAttendanceButton {
+  background-color: #6366f1 !important;
+  transition: background-color 0.2s ease-in-out !important;
+}
+
+.markAttendanceButton:hover {
+  background-color: #4f46e5 !important;
+}
+
+.markAttendanceButton.closeButton {
+  background-color: #ef4444 !important;
+}
+
+.markAttendanceButton.closeButton:hover {
+  background-color: #dc2626 !important;
+}
+
+.markAttendanceButton:disabled {
+  background-color: rgba(0, 0, 0, 0.12) !important;
+  color: rgba(0, 0, 0, 0.26) !important;
+}
+
+.fullScreenCamera {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.cameraCloseButton {
+  position: absolute !important;
+  top: 1.5rem !important;
+  right: 1.5rem !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s ease !important;
+  z-index: 1001 !important;
+  padding: 0.75rem !important;
+}
+
+.cameraCloseButton:hover {
+  background-color: rgba(239, 68, 68, 0.2) !important;
+  transform: scale(1.1);
+}
+
+.cameraCloseButton svg {
+  font-size: 1.75rem;
+}
+
+/* Remove unused styles */
+.historySectionHeader,
+.cameraDialog,
+.cameraTitle,
+.cameraContent,
+.closeButton {
+  display: none;
+}
+
+/* Responsive styles */
+@media (max-width: 960px) {
+  .attendanceCard {
+    margin-bottom: 2rem;
+  }
+
+  .historySection {
+    min-height: 400px;
+  }
+
+  .emptyState {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .headerSection {
+    text-align: center;
+  }
+
+  .headerSection::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .infoItem {
+    padding: 0.5rem;
+  }
+
+  .emptyStateContent {
+    max-width: 100%;
+  }
+}
+
+.infoItem > div {
+  flex: 1;
+}
+
+.infoItem .MuiFormControl-root {
+  margin-top: -8px;
+}
+
+.infoItem .MuiInputLabel-root {
+  color: #6b7280;
+}
+
+.infoItem .MuiOutlinedInput-root {
+  background-color: white;
+}
+
+.infoItem .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #6366f1;
+}
+
+.infoItem .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #6366f1;
+  border-width: 2px;
 }

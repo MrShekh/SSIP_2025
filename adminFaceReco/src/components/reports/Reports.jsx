@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import {
   HiDocument,
   HiEye,
-  HiMail,
+  HiClipboardCheck,
+  HiUserGroup,
+  HiCash,
+  HiCalendar
 } from 'react-icons/hi';
 import ReportFilters from './ReportFilters';
 import ReportScheduler from './ReportScheduler';
-import ReportExport from './ReportExport';
 import ReportViewer from './ReportViewer';
 import styles from './Reports.module.css';
 
@@ -19,6 +21,15 @@ const Reports = () => {
     employee: '',
     status: []
   });
+
+  const [selectedReportTypes, setSelectedReportTypes] = useState([]);
+
+  const reportTypes = [
+    { id: 'employee', label: 'Employee Report', icon: HiUserGroup },
+    { id: 'attendance', label: 'Attendance Report', icon: HiClipboardCheck },
+    { id: 'payroll', label: 'Payroll and Salary Report', icon: HiCash },
+    { id: 'leave', label: 'Leave and Absent Report', icon: HiCalendar }
+  ];
 
   const [scheduleSettings, setScheduleSettings] = useState({
     enabled: false,
@@ -56,16 +67,21 @@ const Reports = () => {
     ]
   };
 
-  const handleExport = async (format) => {
-    console.log(`Exporting in ${format} format`);
-  };
-
   const handleViewReport = () => {
+    if (selectedReportTypes.length === 0) {
+      alert('Please select at least one report type');
+      return;
+    }
     setIsViewerOpen(true);
   };
 
-  const handleEmail = () => {
-    console.log('Sending report via email');
+  const handleReportTypeToggle = (reportId) => {
+    setSelectedReportTypes(prev => {
+      if (prev.includes(reportId)) {
+        return prev.filter(id => id !== reportId);
+      }
+      return [...prev, reportId];
+    });
   };
 
   return (
@@ -74,9 +90,9 @@ const Reports = () => {
         <div className={styles.headerContent}>
           <h1 className={styles.title}>
             <HiDocument className={styles.titleIcon} />
-            Attendance Reports
+            Reports
           </h1>
-          <p className={styles.subtitle}>Configure and generate attendance reports</p>
+          <p className={styles.subtitle}>Configure and generate reports</p>
         </div>
         
         <div className={styles.quickActions}>
@@ -87,16 +103,6 @@ const Reports = () => {
             <HiEye className={styles.actionIcon} />
             View Report
           </button>
-          
-          <button 
-            className={`${styles.actionButton} ${styles.emailButton}`}
-            onClick={handleEmail}
-          >
-            <HiMail className={styles.actionIcon} />
-            Email Report
-          </button>
-
-          <ReportExport filters={filters} onExport={handleExport} />
         </div>
       </header>
 
@@ -106,6 +112,27 @@ const Reports = () => {
             filters={filters}
             onChange={setFilters}
           />
+
+          <div className={styles.reportTypesSection}>
+            <h3 className={styles.sectionTitle}>
+              <HiDocument className={styles.sectionIcon} />
+              Type of Report
+            </h3>
+            <div className={styles.reportTypeOptions}>
+              {reportTypes.map(type => (
+                <label key={type.id} className={styles.reportTypeOption}>
+                  <input
+                    type="checkbox"
+                    checked={selectedReportTypes.includes(type.id)}
+                    onChange={() => handleReportTypeToggle(type.id)}
+                    className={styles.reportTypeCheckbox}
+                  />
+                  <type.icon className={styles.reportTypeIcon} />
+                  <span className={styles.reportTypeLabel}>{type.label}</span>
+                </label>
+              ))}
+            </div>
+          </div>
           
           <ReportScheduler
             settings={scheduleSettings}
@@ -119,6 +146,7 @@ const Reports = () => {
         onClose={() => setIsViewerOpen(false)}
         reportData={summaryData}
         filters={filters}
+        selectedReportTypes={selectedReportTypes}
       />
     </div>
   );

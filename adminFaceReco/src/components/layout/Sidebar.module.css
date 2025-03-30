@@ -35,6 +35,12 @@
     white-space: nowrap;
     text-align: left;
     letter-spacing: -0.025em;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.collapsed .sidebarLogo {
+    opacity: 0;
 }
 
 .collapseButton {
@@ -45,11 +51,22 @@
     padding: 0.5rem;
     border-radius: 0.375rem;
     transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .collapseButton:hover {
     background-color: #374151;
     color: #FFFFFF;
+}
+
+.collapseButton .navIcon {
+    transition: transform 0.3s ease;
+}
+
+.collapsed .collapseButton .navIcon {
+    transform: scale(1.1);
 }
 
 .navigation {
@@ -85,6 +102,7 @@
     width: 1.25rem;
     height: 1.25rem;
     flex-shrink: 0;
+    transition: transform 0.3s ease;
 }
 
 .navText {

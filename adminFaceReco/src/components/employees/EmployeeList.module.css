@@ -1,0 +1,129 @@
+/* Employee List Styles */
+.employeeList {
+  padding: 1.5rem;
+  width: 100%;
+}
+
+.employeeList h2 {
+  font-size: var(--font-size-2xl);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xl);
+  position: relative;
+}
+
+.employeeList h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--color-primary);
+  border-radius: 2px;
+  margin-top: 8px;
+}
+
+.tableContainer {
+  margin-top: 1.5rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.table th {
+  background-color: #f7f9fc;
+  font-weight: 600;
+  color: #374151;
+}
+
+.table tr:hover {
+  background-color: #f9fafb;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  background-color: #f0f2f5;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.actionButton:hover {
+  background-color: #e4e6e9;
+}
+
+.actionButton.view:hover {
+  background-color: #e8f4ff;
+  color: #1890ff;
+}
+
+.actionButton.edit:hover {
+  background-color: #f6ffed;
+  color: #52c41a;
+}
+
+.actionButton.delete:hover {
+  background-color: #fff1f0;
+  color: #f5222d;
+}
+
+.noEmployees {
+  text-align: center;
+  padding: 2rem;
+  background: #f9fafb;
+  border-radius: 8px;
+  color: #6b7280;
+}
+
+.noEmployees p {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .table {
+    min-width: 600px;
+  }
+  
+  .employeeList {
+    padding: var(--spacing-md);
+  }
+}
+
+/* Add extra styling for buttons */
+.actionButton svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Ensure there's enough space for the action buttons */
+.table td:last-child {
+  min-width: 120px;
+} 

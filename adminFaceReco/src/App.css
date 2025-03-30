@@ -82,3 +82,54 @@
     padding: 80px 16px 16px;
   }
 }
+
+/* Add loading spinner styling */
+.app-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f9f9f9;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: #3f51b5;
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Ensure transitions are smooth */
+* {
+  transition: background-color 0.3s, opacity 0.3s, transform 0.3s;
+}
+
+/* Optimize rendering performance */
+.main-container {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Reduce layout thrashing */
+.fixed-height {
+  contain: layout;
+}
+
+/* Improve scrolling performance */
+.scroll-container {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}

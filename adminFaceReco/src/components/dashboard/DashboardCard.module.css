@@ -2,11 +2,16 @@
 .card {
     background: #FFFFFF;
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 1rem;
     position: relative;
     overflow: hidden;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .card:hover {
@@ -17,22 +22,22 @@
 /* Status Indicators */
 .total {
     border-left: 4px solid #3B82F6;
-    background: linear-gradient(to right, rgba(59, 130, 246, 0.1), transparent 50%);
+    background: linear-gradient(to right, rgba(59, 130, 246, 0.08), transparent 50%);
 }
 
 .present {
     border-left: 4px solid #10B981;
-    background: linear-gradient(to right, rgba(16, 185, 129, 0.1), transparent 50%);
+    background: linear-gradient(to right, rgba(16, 185, 129, 0.08), transparent 50%);
 }
 
 .absent {
-    border-left: 4px solid #EF4444;
-    background: linear-gradient(to right, rgba(239, 68, 68, 0.1), transparent 50%);
+    border-left: 4px solid #DC2626;
+    background: linear-gradient(to right, rgba(220, 38, 38, 0.08), transparent 50%);
 }
 
 .late {
     border-left: 4px solid #F59E0B;
-    background: linear-gradient(to right, rgba(245, 158, 11, 0.1), transparent 50%);
+    background: linear-gradient(to right, rgba(245, 158, 11, 0.08), transparent 50%);
 }
 
 .cardHeader {
@@ -62,33 +67,42 @@
 
 .total .cardIcon {
     color: #3B82F6;
-    background-color: rgba(59, 130, 246, 0.1);
+    background-color: rgba(59, 130, 246, 0.08);
 }
 
 .present .cardIcon {
     color: #10B981;
-    background-color: rgba(16, 185, 129, 0.1);
+    background-color: rgba(16, 185, 129, 0.08);
 }
 
 .absent .cardIcon {
-    color: #EF4444;
-    background-color: rgba(239, 68, 68, 0.1);
+    color: #DC2626;
+    background-color: rgba(220, 38, 38, 0.08);
 }
 
 .late .cardIcon {
     color: #F59E0B;
-    background-color: rgba(245, 158, 11, 0.1);
+    background-color: rgba(245, 158, 11, 0.08);
 }
 
 .cardValue {
     font-size: 2rem;
     font-weight: 700;
     color: #111827;
-    margin: 0.5rem 0;
+    margin: 0.20rem 0;
 }
 
 .cardDescription {
     font-size: 0.875rem;
     color: #6B7280;
     margin: 0;
+}
+
+/* Grid Layout */
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    align-items: stretch;
 }

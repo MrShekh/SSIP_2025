@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Face Detection Test</title>
+  <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: Arial, sans-serif;
+    }
+    
+    video {
+      width: 640px;
+      height: 480px;
+      border: 1px solid #ccc;
+      margin-top: 20px;
+    }
+    
+    #status {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    
+    .detected {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    
+    .not-detected {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+    
+    button {
+      margin-top: 20px;
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Face Detection Test</h1>
+  <p>This page tests if face-api.js can detect faces using your webcam.</p>
+  
+  <video id="video" autoplay muted></video>
+  <div id="status" class="not-detected">No face detected</div>
+  <button id="start-button">Start Face Detection</button>
+  
+  <script>
+    // DOM elements
+    const video = document.getElementById('video');
+    const statusDiv = document.getElementById('status');
+    const startButton = document.getElementById('start-button');
+    
+    // Flag to track if detection is running
+    let isRunning = false;
+    
+    // Start webcam
+    async function startVideo() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        video.srcObject = stream;
+        console.log('Webcam started');
+      } catch (err) {
+        console.error('Error accessing webcam:', err);
+        alert('Error accessing webcam: ' + err.message);
+      }
+    }
+    
+    // Load face-api.js models
+    async function loadModels() {
+      try {
+        console.log('Loading models...');
+        statusDiv.textContent = 'Loading models...';
+        
+        // Try to load from /models path
+        await faceapi.nets.tinyFaceDetector.loadFromUri('/models');
+        
+        console.log('Models loaded successfully');
+        return true;
+      } catch (err) {
+        console.error('Error loading models:', err);
+        statusDiv.textContent = 'Error loading models';
+        return false;
+      }
+    }
+    
+    // Detect faces
+    async function detectFaces() {
+      if (!isRunning) return;
+      
+      try {
+        const detections = await faceapi.detectAllFaces(
+          video, 
+          new faceapi.TinyFaceDetectorOptions({ inputSize: 224, scoreThreshold: 0.3 })
+        );
+        
+        if (detections.length > 0) {
+          statusDiv.textContent = `Face detected! Confidence: ${detections[0].score.toFixed(2)}`;
+          statusDiv.className = 'detected';
+          console.log('Face detected:', detections);
+        } else {
+          statusDiv.textContent = 'No face detected';
+          statusDiv.className = 'not-detected';
+        }
+      } catch (err) {
+        console.error('Error during detection:', err);
+        statusDiv.textContent = 'Error during detection';
+        statusDiv.className = 'not-detected';
+      }
+      
+      // Continue detection
+      requestAnimationFrame(detectFaces);
+    }
+    
+    // Start detection when button is clicked
+    startButton.addEventListener('click', async () => {
+      if (isRunning) return;
+      
+      await startVideo();
+      const modelsLoaded = await loadModels();
+      
+      if (modelsLoaded) {
+        isRunning = true;
+        startButton.disabled = true;
+        startButton.textContent = 'Detection Running';
+        detectFaces();
+      } else {
+        alert('Failed to load face detection models');
+      }
+    });
+  </script>
+</body>
+</html> 

@@ -1,0 +1,74 @@
+.attendanceReport {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.reportHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+}
+
+.statsSection {
+  margin-bottom: 24px;
+}
+
+.chartPaper {
+  padding: 24px;
+  height: 100%;
+}
+
+.filterSection {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  align-items: center;
+}
+
+.timeCell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .chartPaper {
+    background-color: #1e1e1e;
+  }
+
+  .timeCell svg {
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .reportHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .filterSection {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .timeCell {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+} 
